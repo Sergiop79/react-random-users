@@ -1,3 +1,26 @@
 .App {
-  text-align: center;
+  width: 90%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button {
+  background-color: rebeccapurple;
+  color: white;
+  grid-column: 1 / -1;
+  border: none;
+  padding: 1rem 2rem;
+  justify-self: center;
+}
+
+@media screen and (min-width: 900px) {
+  .App {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

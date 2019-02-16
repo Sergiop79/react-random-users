@@ -4,7 +4,10 @@
   position: relative;
   width: 64px;
   height: 64px;
+  grid-column: 1 / -1;
+  justify-self: center;
 }
+
 .Spinner div {
   transform-origin: 32px 32px;
   animation: lds-spinner 1.2s linear infinite;
@@ -18,7 +21,7 @@
   width: 5px;
   height: 14px;
   border-radius: 20%;
-  background: #cef;
+  background: rebeccapurple;
 }
 .Spinner div:nth-child(1) {
   transform: rotate(0deg);

@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     users: [],
     page: 1,
-    perPage: 10,
+    perPage: 15,
     loading: false
   };
 
@@ -48,7 +48,7 @@ class App extends Component {
   render() {
     const result = <Users users={this.state.users} />;
     const loadMoreButton = (
-      <button onClick={this.handleLoadMore}>Load more</button>
+      <button className="Button" onClick={this.handleLoadMore}>Load more</button>
     );
 
     return (

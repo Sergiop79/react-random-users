@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Spinner.css";
+import "./Spinner-stylesheet.css";
 
 const Spinner = props => (
   <div className="Spinner">
