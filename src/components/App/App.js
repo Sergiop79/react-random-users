@@ -10,12 +10,15 @@ class App extends Component {
   state = {
     users: [],
     page: 1,
-    perPage: 15,
+    perPage: 10,
     loading: false
   };
 
   componentDidMount() {
     this.fetchUsers();
+    this.scrollListener = window.addEventListener('scroll', e => {
+      this.handleScroll(e);
+    })
   }
 
   fetchUsers = () => {
@@ -38,8 +41,21 @@ class App extends Component {
     });
   };
 
+  handleScroll = (e) => {
+    const {loading} = this.state;
+    if (loading) {
+      return;
+    }
+    const lastUser = document.querySelector('.App > div:last-child');
+    const lastUserOffset = lastUser.offsetTop;
+    const pageOffset = window.pageYOffset + window.innerHeight;
+    const bottomOffset = 20;
+    if (pageOffset > lastUserOffset - bottomOffset) {
+      this.handleLoadMore()
+    }
+  }
+
   handleLoadMore = () => {
-    console.log("loading more");
     this.setState({ page: this.state.page + 1 }, () => {
       this.fetchUsers();
     });
@@ -47,16 +63,11 @@ class App extends Component {
 
   render() {
     const result = <Users users={this.state.users} />;
-    const loadMoreButton = (
-      <button className="Button" onClick={this.handleLoadMore}>Load more</button>
-    );
-
     return (
       <div className="App">
         <Header />
         {result}
         {this.state.loading ? <Spinner /> : null}
-        {!this.state.loading ? loadMoreButton : null}
       </div>
     );
   }
